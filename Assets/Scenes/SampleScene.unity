@@ -762,8 +762,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2a6b14d5a70a4b7aa86889869dcd47f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwableObject: {fileID: 0}
-  active: 0
+  throwableObject: {fileID: 11400000, guid: 90870221afafb42c8966b99abb76586e, type: 2}
+  active: 1
 --- !u!1 &1776018801
 GameObject:
   m_ObjectHideFlags: 0

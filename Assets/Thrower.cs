@@ -56,10 +56,9 @@ public class Thrower : MonoBehaviour
         if(throwableObject != null && throwable){
             throwable.active = true;
             throwableObject.GetComponent<Rigidbody2D>().velocity = transform.right * throwForce;
-        // Debug.DrawRay(transform.position, new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical")), Color.red);
         }
-        hasGrabbed=false;
 
+        hasGrabbed=false;
     }
 
     private void OnDrawGizmos() {

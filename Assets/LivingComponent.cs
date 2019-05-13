@@ -16,8 +16,6 @@ public class LivingComponent : MonoBehaviour
     // Start is called before the first frame update
     public Animator _animator;
 
-
-
     public void ReplenishHealth(int value)
     {
         onReplenish.Invoke();
@@ -40,10 +38,6 @@ public class LivingComponent : MonoBehaviour
         {
             Die();
         }
-    }
-
-    public virtual void UpdateUI(){
-
     }
 
     public void Die()
