@@ -26,10 +26,6 @@ public class Throwable : MonoBehaviour
     }
 
     private void OnCollisionStay2D(Collision2D other) {
-        if(other.transform.tag == "Enemy" && active){
-            other.gameObject.GetComponent<LivingComponent>().Damage(1);
-        }
-
         if(DestroyOnImpact() && active && other.transform.tag != "Char"){
             Destroy(gameObject);
         }

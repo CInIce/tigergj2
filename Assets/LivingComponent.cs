@@ -28,7 +28,7 @@ public class LivingComponent : MonoBehaviour
         // _animator.SetTrigger("damage");
         currentHealth = currentHealth - value;
 
-        if(currentHealth < 0){
+        if(currentHealth <= 0){
             if(gameObject.tag == "Enemy"){
                 // PlayerPrefs.SetInt("enemyskilled", PlayerPrefs.GetInt("enemyskilled") + 1);
                 // GameManager.instance.scoreSystem.kills++;
