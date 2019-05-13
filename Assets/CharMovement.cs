@@ -13,8 +13,20 @@ public class CharMovement : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
-        if(other.collider.tag=="throw"){
+        
+    }
 
+    private void OnTriggerEnter(Collider other) {
+        if(other.tag=="Portal"){
+            print("collided");
+            RoomManager.instance.winCondition = true;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other) {
+        if(other.tag=="Portal"){
+            print("collided");
+            RoomManager.instance.winCondition = true;
         }
     }
 

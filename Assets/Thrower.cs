@@ -34,7 +34,6 @@ public class Thrower : MonoBehaviour
             }
 
             
-            
         }
 
         if(hasGrabbed){
@@ -53,8 +52,10 @@ public class Thrower : MonoBehaviour
         input.x = Input.GetAxis("Horizontal");
         input.y = Input.GetAxis("Vertical");
         
-        if(throwableObject != null){
-        throwableObject.GetComponent<Rigidbody2D>().velocity = transform.right * throwForce;
+        Throwable throwable =  throwableObject.GetComponent<Throwable>();
+        if(throwableObject != null && throwable){
+            throwable.active = true;
+            throwableObject.GetComponent<Rigidbody2D>().velocity = transform.right * throwForce;
         // Debug.DrawRay(transform.position, new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical")), Color.red);
         }
         hasGrabbed=false;
