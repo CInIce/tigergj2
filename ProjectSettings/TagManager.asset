@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Char
   - block
+  - Throwable
   layers:
   - Default
   - TransparentFX

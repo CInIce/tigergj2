@@ -1,20 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private Transform _goal;
     [SerializeField] private Vector2 _avoidenceOffset;
     [SerializeField] private float _speed;
+    [SerializeField] private float _knockbackMult;
+    [SerializeField] private SpriteRenderer _healtbar;
 
+    private LivingComponent _livingComponent;
     private Rigidbody2D _rigidbody;
     private Vector2 _target;
 
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        _livingComponent = GetComponent<LivingComponent>();
         _target = GetTarget(_goal.position);
+        _livingComponent.onDamage += UpdateUI;
+    }
+
+    private void UpdateUI ()
+    {
+        _healtbar.size = new Vector2((float)_livingComponent.CurrentHealth / (float)_livingComponent.MaxHealth, _healtbar.size.y);
     }
 
     private void Update()
@@ -81,7 +92,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.collider.tag == "Throwable")
         {
-            _rigidbody.velocity = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
+            _rigidbody.velocity = collision.gameObject.GetComponent<Rigidbody2D>().velocity * _knockbackMult;
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         }
     }
