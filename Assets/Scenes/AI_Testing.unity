@@ -423,7 +423,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _goal: {fileID: 1222107869}
   _avoidenceOffset: {x: 1, y: 1}
-  _speed: 1
+  _speed: 0.01
 --- !u!61 &1453172406
 BoxCollider2D:
   m_ObjectHideFlags: 0

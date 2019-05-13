@@ -13,8 +13,6 @@ public class LivingComponent : MonoBehaviour
 
     [SerializeField] private int currentHealth = 3;
     [SerializeField] private int maxHealth = 3;
-    // Start is called before the first frame update
-    public Animator _animator;
 
     public void ReplenishHealth(int value)
     {
@@ -45,15 +43,5 @@ public class LivingComponent : MonoBehaviour
         onDeath.Invoke();
 
         Destroy(gameObject);
-    }
-    void Start()
-    {
-        _animator = GetComponent<Animator>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

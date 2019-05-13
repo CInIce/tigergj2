@@ -8,10 +8,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Vector2 _avoidenceOffset;
     [SerializeField] private float _speed;
 
+    private Rigidbody2D _rigidbody;
     private Vector2 _target;
 
     private void Start()
     {
+        _rigidbody = GetComponent<Rigidbody2D>();
         _target = GetTarget(_goal.position);
     }
 
@@ -73,7 +75,14 @@ public class Enemy : MonoBehaviour
         {
             return goal;
         }
+    }
 
-        return new Vector2();
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Throwable")
+        {
+            _rigidbody.velocity = collision.gameObject.GetComponent<Rigidbody2D>().velocity;
+            collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        }
     }
 }
