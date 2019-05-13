@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class LivingComponent : MonoBehaviour
 {
+    public event Action onDeath = () => { };
+    public event Action onDamage = () => { };
+    public event Action onReplenish = () => { };
 
     [SerializeField] private GameObject _drop = null;
 
@@ -14,7 +18,10 @@ public class LivingComponent : MonoBehaviour
 
 
 
-    public void ReplenishHealth(int value){
+    public void ReplenishHealth(int value)
+    {
+        onReplenish.Invoke();
+
         currentHealth += value;
 
         if (currentHealth > maxHealth)
@@ -23,39 +30,26 @@ public class LivingComponent : MonoBehaviour
         }
     }
 
-    public virtual void Damage(int value){
-        // if(!_animator.GetCurrentAnimatorStateInfo(0).IsName("damage")){
-        // _animator.SetTrigger("damage");
+    public virtual void Damage(int value)
+    {
+        onDamage.Invoke();
+
         currentHealth = currentHealth - value;
 
-        if(currentHealth < 0){
-            if(gameObject.tag == "Enemy"){
-                // PlayerPrefs.SetInt("enemyskilled", PlayerPrefs.GetInt("enemyskilled") + 1);
-                // GameManager.instance.scoreSystem.kills++;
-            }
-            
+        if(currentHealth < 0)
+        {
             Die();
         }
-        // UpdateUI();
-        // }
     }
 
     public virtual void UpdateUI(){
 
     }
 
-    public void Die(){
+    public void Die()
+    {
+        onDeath.Invoke();
 
-        if (gameObject.tag == "Player")
-        {
-            
-        }
-
-        if (_drop != null)
-        {
-
-        }
-        
         Destroy(gameObject);
     }
     void Start()
