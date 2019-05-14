@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
 
     private void MoveTowardsPoint (Vector2 point)
     {
-        transform.position = Vector2.MoveTowards(transform.position, point, _speed);
+        transform.position = Vector2.MoveTowards(transform.position, point, _speed*Time.deltaTime);
     }
 
     private Vector2 GetTarget (Vector2 goal)
