@@ -999,11 +999,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1776018801}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a7418be513a74e9cab8ea1d8617aa7d, type: 3}
+  m_Script: {fileID: 11500000, guid: d4ab2d3d44298914788e7bd2a1665826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 3
-  maxHealth: 3
+  _KOTime: 3
+  _KOVelocityMult: 0.1
 --- !u!1 &1825291920
 GameObject:
   m_ObjectHideFlags: 0
