@@ -9,10 +9,24 @@ public class LivingComponent : MonoBehaviour
     public event Action onDamage = () => { };
     public event Action onReplenish = () => { };
 
-    [SerializeField] private GameObject _drop = null;
-
     [SerializeField] private int currentHealth = 3;
     [SerializeField] private int maxHealth = 3;
+
+    public int CurrentHealth
+    {
+        get
+        {
+            return currentHealth;
+        }
+    }
+
+    public int MaxHealth
+    {
+        get
+        {
+            return maxHealth;
+        }
+    }
 
     public void ReplenishHealth(int value)
     {
@@ -28,11 +42,11 @@ public class LivingComponent : MonoBehaviour
 
     public virtual void Damage(int value)
     {
-        onDamage.Invoke();
-
         currentHealth = currentHealth - value;
 
-        if(currentHealth < 0)
+        onDamage.Invoke();
+
+        if (currentHealth <= 0)
         {
             Die();
         }
